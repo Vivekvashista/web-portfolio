@@ -32,6 +32,9 @@ export const theme = createTheme({
           "font-family": "Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,\n" +
             "    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif",
         },
+        body: {
+          letterSpacing: '0.08rem !important'
+        }
       },
     },
   },

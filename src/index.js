@@ -2,14 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {CssBaseline, MuiThemeProvider} from "@material-ui/core";
+import ThemeProvider from "@material-ui/styles/ThemeProvider";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import {theme} from "./theme";
 
 ReactDOM.render(
-  <MuiThemeProvider theme={theme}>
+  <ThemeProvider theme={theme}>
     <CssBaseline/>
     <App/>
-  </MuiThemeProvider>,
+  </ThemeProvider>,
   document.getElementById('root')
 );
 
