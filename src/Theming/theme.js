@@ -3,6 +3,7 @@ import typography from "./typography";
 
 export const theme = createTheme({
   palette: {
+    type: 'dark',
     common:{
       white: `#fff`,
       black: `#000`
@@ -19,6 +20,10 @@ export const theme = createTheme({
     background: {
       main: "#FFFEF9",
     },
+    text: {
+      primary: '#767d86',
+      secondary: '#5f86ec'
+    }
   },
   typography: {
     ...typography

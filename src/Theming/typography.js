@@ -20,12 +20,12 @@ const typography = {
     letterSpacing: '0.08rem'
   },
   h5: {
-    fontWeight: 500,
+    fontWeight: 600,
     fontSize: 16,
     letterSpacing: '0.08rem'
   },
   h6: {
-    fontWeight: 500,
+    fontWeight: 600,
     fontSize: 14,
     letterSpacing: '0.08rem'
   },
