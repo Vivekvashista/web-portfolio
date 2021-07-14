@@ -3,7 +3,6 @@ import typography from "./typography";
 
 export const theme = createTheme({
   palette: {
-    type: 'dark',
     common:{
       white: `#fff`,
       black: `#000`

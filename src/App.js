@@ -1,9 +1,9 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import AppLayout from "./layout/AppLayout";
-import Fallback from "./components/Fallback";
-import Routes from "./components/Routes";
-const NotFound = React.lazy(() => import("./components/NotFound"));
+import Fallback from "./components/fallbackPages/Fallback";
+import Routes from "./Routes";
+const NotFound = React.lazy(() => import("./components/fallbackPages/NotFound"));
 
 const App = () => {
   return (

@@ -4,10 +4,10 @@ import AppHeader from "./AppHeader";
 const AppLayout = ({ children }) => {
   return (
     <>
-      <AppHeader/>
+      <AppHeader />
       {children}
     </>
-  );
-}
+  )
+};
 
 export default AppLayout;

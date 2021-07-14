@@ -15,39 +15,37 @@ import {UnfoldMore} from "@material-ui/icons";
 import {ListItemText} from "@material-ui/core";
 import {useState} from "react";
 import {useEffect} from "react";
-import {InterestService} from "../utils/helpers";
+import {useHistory, useLocation} from 'react-router-dom';
+import JobTitleWithEffect from "./components/JobTitleWithEffect";
+import MenuRenderer from "../components/helperComponents/MenuRenderer";
 
 const AppHeader = () => {
   const classes = useStyles();
 
-  const [jobTitle, setJobTitle] = useState("");
-  function getNavItem(index) {
+  const [activeTab, setActiveTab] = useState(0);
+  const history = useHistory();
+  const location = useLocation();
+
+  const getNavItem = (index) => {
     return ({
       variant: 'h5',
-      color: index === 1 ? "textSecondary" : "textPrimary"
+      color: index === activeTab ? "textSecondary" : "textPrimary"
     });
-  }
+  };
 
-  const showInterestedJobTitles = (interests) => {
-    let factor = 1;
-    for(let i = 1 ; i <= interests.length ; i++){
-      const title = interests.getNext();
-      title.split('').forEach((ch, ind) => {
-        setTimeout( () => {
-          setJobTitle(title.substr(0, ind+1));
-        }, 100 * factor);
-        factor++;
-      });
-      factor+=10;
-    }
+  const selectTab = index => () => {
+    history.push(`/${constants.navItems[index]}`);
   }
 
   useEffect(() => {
-    showInterestedJobTitles(new InterestService(constants.interests));
-  }, []);
+    const id = location.pathname.replace("/","");
+    const index = constants.navItems.findIndex(item => item === id);
+    if(index !== -1)
+      setActiveTab(index);
+  }, [location]);
 
   return (
-    <AppBar position='sticky' elevation={0}>
+    <AppBar position='sticky' elevation={0} className={classes.horizontalLine}>
       <Toolbar>
         <Box display='flex' alignItems='center'>
           <Avatar src={Photo} alt='Vivek' className={classes.large}/>
@@ -55,15 +53,13 @@ const AppHeader = () => {
             <Typography variant='body2' component='div'>
               Vivek Sharma
             </Typography>
-            <Typography variant='h5' component='div'>
-              {jobTitle}
-            </Typography>
+            <JobTitleWithEffect/>
           </Box>
         </Box>
         <List component='nav' classes={{root: classes.list}}>
           {
-            constants.navItems.map((item, index) => (
-              <ListItem key={index} className={classes.transition}>
+            constants.navItems.slice(0,4).map((item, index) => (
+              <ListItem key={index} className={classes.transition} onClick={selectTab(index)}>
                 <ListItemText primaryTypographyProps={getNavItem(index)}>
                   {item}
                 </ListItemText>
@@ -72,9 +68,14 @@ const AppHeader = () => {
           }
           <ListItem>
             <ListItemIcon>
-              <IconButton size='small' color='secondary'>
-                <UnfoldMore/>
-              </IconButton>
+              <MenuRenderer
+                items={constants.navItems.slice(4)}
+                Component={
+                  <IconButton size='small' color='secondary'>
+                    <UnfoldMore/>
+                  </IconButton>
+                }
+              />
             </ListItemIcon>
           </ListItem>
         </List>
@@ -118,5 +119,8 @@ const useStyles = makeStyles(theme => ({
       transition : 'transform 0.4s ease-in-out'
     }
   },
+  horizontalLine: {
+    borderBottom: `1px solid ${theme.palette.grey["200"]}`
+  }
 }));
 export default AppHeader;
