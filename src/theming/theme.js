@@ -20,8 +20,8 @@ export const theme = createTheme({
       main: "#FFFEF9",
     },
     text: {
-      primary: '#767d86',
-      secondary: '#5f86ec'
+      secondary: '#767d86',
+      hint: '#5f86ec',
     }
   },
   typography: {

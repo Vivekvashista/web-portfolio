@@ -24,6 +24,7 @@ function TypingEffect() {
       arr.length * 20
     );
     console.debug({intervalDelay});
+    showInterestedJobTitles(setState, new InterestService(arr));
     loopInterval = setInterval(() => {
       showInterestedJobTitles(setState, new InterestService(arr));
     }, intervalDelay * DELAY_FOR_CHARACTER);

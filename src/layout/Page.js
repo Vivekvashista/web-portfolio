@@ -14,7 +14,7 @@ const Page = ({ children }) => {
 
 const useStyles = makeStyles(theme => ({
   container: {
-    height: 'calc(100vh - 64px)',
+    height: 'calc(100vh - 70px)',
     background: theme.palette.background.main
   }
 }));

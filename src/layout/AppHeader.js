@@ -18,6 +18,7 @@ import {useEffect} from "react";
 import {useHistory, useLocation} from 'react-router-dom';
 import JobTitleWithEffect from "./components/JobTitleWithEffect";
 import MenuRenderer from "../components/helperComponents/MenuRenderer";
+import {PersonalDetails} from "../utils/constants";
 
 const AppHeader = () => {
   const classes = useStyles();
@@ -29,7 +30,7 @@ const AppHeader = () => {
   const getNavItem = (index) => {
     return ({
       variant: 'h5',
-      color: index === activeTab ? "textSecondary" : "textPrimary"
+      className: activeTab === index ? classes.active : classes.textSecondary
     });
   };
 
@@ -47,15 +48,23 @@ const AppHeader = () => {
   return (
     <AppBar position='sticky' elevation={0} className={classes.horizontalLine}>
       <Toolbar>
-        <Box display='flex' alignItems='center'>
-          <Avatar src={Photo} alt='Vivek' className={classes.large}/>
-          <Box className={classes.info}>
-            <Typography variant='body2' component='div'>
-              Vivek Sharma
-            </Typography>
-            <JobTitleWithEffect/>
+        {
+          activeTab !==0 &&
+          <Box display='flex' alignItems='center'>
+            <Avatar src={Photo} alt='Vivek' className={classes.large}/>
+            <Box className={classes.info}>
+              <Typography variant='body2' component='div'>
+                {PersonalDetails.MY_NAME}
+              </Typography>
+              <JobTitleWithEffect
+                typographyProps={{
+                  variant: 'h5',
+                  component: 'div'
+                }}
+              />
+            </Box>
           </Box>
-        </Box>
+        }
         <List component='nav' classes={{root: classes.list}}>
           {
             constants.navItems.slice(0,4).map((item, index) => (
@@ -121,6 +130,12 @@ const useStyles = makeStyles(theme => ({
   },
   horizontalLine: {
     borderBottom: `1px solid ${theme.palette.grey["200"]}`
+  },
+  textSecondary: {
+    color: theme.palette.text.secondary,
+  },
+  active: {
+    color: theme.palette.text.hint,
   }
 }));
 export default AppHeader;

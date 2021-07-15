@@ -5,7 +5,7 @@ import {useEffect} from "react";
 import TypingEffect from "../../services/TypingEffect";
 import constants from "../../utils/constants";
 
-const JobTitleWithEffect = () => {
+const JobTitleWithEffect = ({ typographyProps }) => {
   const [jobTitle, setJobTitle] = useState("");
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const JobTitleWithEffect = () => {
 
   return (
     <>
-      <Typography variant='h5' component='div'>
+      <Typography {...typographyProps}>
         {jobTitle}
       </Typography>
     </>
