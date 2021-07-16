@@ -19,13 +19,13 @@ const Profile = () => {
 
   return (
     <Page>
-      <Grid container className={classes.paddingTop} alignItems='center'>
-        <Grid item xl={3} lg={3} md={4} sm={5} xs={12} className={classes.center}>
+      <Grid container className={classes.detailsContainer} alignItems='center'>
+        <Grid item xl={3} lg={4} md={4} sm={12} xs={12} className={classes.center}>
           <Avatar alt="Display Picture" src={image} className={classes.large}>
             V
           </Avatar>
         </Grid>
-        <Grid item xl={9} lg={9} md={8} sm={7} xs={12}>
+        <Grid item xl={9} lg={8} md={8} sm={12} xs={12} className={classes.contactDetails}>
           <Box display='flex' alignItems='center'>
             <Typography variant='h4' component='h2' className={classes.marginRight}>
               {PersonalDetails.MY_NAME}
@@ -37,11 +37,19 @@ const Profile = () => {
               }}
             />
           </Box>
-          <Box display='flex' alignItems='center'>
+          <Box
+            display='flex'
+            alignItems='center'
+          >
             <IconButton disableRipple>
               <MailOutline/>
             </IconButton>
-            <Typography variant='body1' component='div'>
+            <Typography
+              variant='body1'
+              component='a'
+              href={`mailto:${PersonalDetails.EMAIL}`}
+              className={classes.removeLinkStyle}
+            >
               {PersonalDetails.EMAIL}
             </Typography>
           </Box>
@@ -49,14 +57,19 @@ const Profile = () => {
             <IconButton disableRipple>
               <Call/>
             </IconButton>
-            <Typography variant='body1' component='div'>
+            <Typography
+              variant='body1'
+              component='a'
+              href={`tel:${PersonalDetails.EMAIL}`}
+              className={classes.removeLinkStyle}
+            >
               {PersonalDetails.CONTACT}
             </Typography>
           </Box>
         </Grid>
       </Grid>
 
-      <Box paddingLeft={3}>
+      <Box paddingLeft={3} paddingTop={3}>
         <Heading text={'About'}/>
         <Typography variant='body1' component='div'>
           Hi, my name is Vivek Sharma. I am working as full stack engineer at s759labs (Stealth mode).<br/>
@@ -71,6 +84,12 @@ const Profile = () => {
           I love to write function based code with Software Engineering Principles in mind.<br/>
           I have analytical skills to keep UI simple for better UX.<br/>
         </Typography>
+        <Box paddingTop={2}>
+          <Heading text="Skills"/>
+          <Typography variant='body1' component="div">
+            {PersonalDetails.SKILLS.join(", ")}
+          </Typography>
+        </Box>
       </Box>
     </Page>
   );
@@ -82,13 +101,23 @@ const useStyles = makeStyles(theme => ({
     height: 200
   },
   center: {
-    display: 'flex',
-    justifyContent: 'center',
+    [theme.breakpoints.down("sm")]: {
+      display: 'flex',
+      justifyContent: 'center'
+    }
   },
   marginRight: {
     marginRight: theme.spacing(2)
   },
-  paddingTop: {
+  removeLinkStyle: {
+    color: theme.palette.text.primary,
+    textDecoration: 'none',
+    "&:hover": {
+      textDecoration: 'underline'
+    }
+  },
+  detailsContainer: {
+    paddingLeft: theme.spacing(3),
     paddingTop: theme.spacing(2)
   }
 }));

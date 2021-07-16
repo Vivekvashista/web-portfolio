@@ -15,7 +15,7 @@ const typography = {
     letterSpacing: '0.08rem'
   },
   h4: {
-    fontWeight: 500,
+    fontWeight: 600,
     fontSize: 20,
     letterSpacing: '0.08rem'
   },

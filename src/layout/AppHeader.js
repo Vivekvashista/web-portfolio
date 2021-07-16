@@ -9,7 +9,6 @@ import {Typography} from "@material-ui/core";
 import {List} from "@material-ui/core";
 import constants from "../utils/constants";
 import {ListItem} from "@material-ui/core";
-import {ListItemIcon} from "@material-ui/core";
 import {IconButton} from "@material-ui/core";
 import {UnfoldMore} from "@material-ui/icons";
 import {ListItemText} from "@material-ui/core";
@@ -19,6 +18,11 @@ import {useHistory, useLocation} from 'react-router-dom';
 import JobTitleWithEffect from "./components/JobTitleWithEffect";
 import MenuRenderer from "../components/helperComponents/MenuRenderer";
 import {PersonalDetails} from "../utils/constants";
+import {AccountCircle} from "@material-ui/icons";
+import {Brightness3} from "@material-ui/icons";
+import {selectTab} from "../utils/helpers";
+import {getMenuItems} from "../utils/helpers";
+import {getSocialMediaItems} from "../utils/helpers";
 
 const AppHeader = () => {
   const classes = useStyles();
@@ -27,16 +31,12 @@ const AppHeader = () => {
   const history = useHistory();
   const location = useLocation();
 
-  const getNavItem = (index) => {
+  const getNavTypographyProps = (index) => {
     return ({
       variant: 'h5',
       className: activeTab === index ? classes.active : classes.textSecondary
     });
   };
-
-  const selectTab = index => () => {
-    history.push(`/${constants.navItems[index]}`);
-  }
 
   useEffect(() => {
     const id = location.pathname.replace("/","");
@@ -52,7 +52,7 @@ const AppHeader = () => {
           activeTab !==0 &&
           <Box display='flex' alignItems='center'>
             <Avatar src={Photo} alt='Vivek' className={classes.large}/>
-            <Box className={classes.info}>
+            <Box>
               <Typography variant='body2' component='div'>
                 {PersonalDetails.MY_NAME}
               </Typography>
@@ -65,47 +65,64 @@ const AppHeader = () => {
             </Box>
           </Box>
         }
-        <List component='nav' classes={{root: classes.list}}>
-          {
-            constants.navItems.slice(0,4).map((item, index) => (
-              <ListItem key={index} className={classes.transition} onClick={selectTab(index)}>
-                <ListItemText primaryTypographyProps={getNavItem(index)}>
-                  {item}
-                </ListItemText>
-              </ListItem>
-            ))
-          }
-          <ListItem>
-            <ListItemIcon>
-              <MenuRenderer
-                items={constants.navItems.slice(4)}
-                Component={
-                  <IconButton size='small' color='secondary'>
-                    <UnfoldMore/>
-                  </IconButton>
-                }
-              />
-            </ListItemIcon>
-          </ListItem>
-        </List>
+        <Box className={classes.navContainer}>
+          <Box display="flex" alignItems='center' className={classes.showOnDesktop}>
+            <List component='nav' classes={{root: classes.list}}>
+              {
+                constants.navItems.slice(0,4).map((item, index) => (
+                  <ListItem key={index} className={classes.transition} onClick={selectTab(history, index)}>
+                    <ListItemText primaryTypographyProps={getNavTypographyProps(index)}>
+                      {item}
+                    </ListItemText>
+                  </ListItem>
+                ))
+              }
+            </List>
+            <MenuRenderer
+              items={getMenuItems(history, 4)}
+              Component={
+                <IconButton color='secondary'>
+                  <UnfoldMore/>
+                </IconButton>
+              }
+              typographyProps={getNavTypographyProps}
+              startIndex={4}
+            />
+          </Box>
+          <Box className={classes.showOnMobile}>
+            <MenuRenderer
+              items={getMenuItems(history, 0)}
+              Component={
+                <IconButton color='secondary'>
+                  <UnfoldMore/>
+                </IconButton>
+              }
+              typographyProps={getNavTypographyProps}
+              startIndex={0}
+            />
+          </Box>
+          <MenuRenderer
+            items={getSocialMediaItems()}
+            Component={
+              <IconButton>
+                <AccountCircle/>
+              </IconButton>
+            }
+          />
+          <IconButton>
+            <Brightness3/>
+          </IconButton>
+        </Box>
       </Toolbar>
     </AppBar>
   );
-}
+};
 
 const useStyles = makeStyles(theme => ({
   large: {
     width: 55,
     height: 55,
     marginRight: theme.spacing(1)
-  },
-  info: {
-    //color: theme.palette.grey.A700,
-  },
-  list: {
-    display: 'flex',
-    marginLeft: `auto`,
-    // marginRight: 'auto'
   },
   transition: {
     position: 'relative',
@@ -136,6 +153,24 @@ const useStyles = makeStyles(theme => ({
   },
   active: {
     color: theme.palette.text.hint,
+  },
+  showOnDesktop: {
+    [theme.breakpoints.down("sm")]: {
+      display: "none"
+    }
+  },
+  list: {
+    display: "flex"
+  },
+  showOnMobile: {
+    [theme.breakpoints.up("md")]: {
+      display: "none"
+    }
+  },
+  navContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    marginLeft: 'auto'
   }
 }));
 export default AppHeader;
