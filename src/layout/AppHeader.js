@@ -23,6 +23,7 @@ import {Brightness3} from "@material-ui/icons";
 import {selectTab} from "../utils/helpers";
 import {getMenuItems} from "../utils/helpers";
 import {getSocialMediaItems} from "../utils/helpers";
+import {Tooltip} from "@material-ui/core";
 
 const AppHeader = () => {
   const classes = useStyles();
@@ -109,9 +110,11 @@ const AppHeader = () => {
               </IconButton>
             }
           />
-          <IconButton>
-            <Brightness3/>
-          </IconButton>
+          <Tooltip title='toggle light/dark mode'>
+            <IconButton>
+              <Brightness3/>
+            </IconButton>
+          </Tooltip>
         </Box>
       </Toolbar>
     </AppBar>

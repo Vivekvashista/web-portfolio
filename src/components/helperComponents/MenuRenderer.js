@@ -12,6 +12,11 @@ export default function MenuRenderer({ items, Component, typographyProps, startI
     setAnchorEl(event.currentTarget);
   };
 
+  const handleMenuItemClick = onClick => e => {
+    onClick?.();
+    handleClose();
+  }
+
   const isString = str => typeof str === "string";
 
   const handleClose = () => {
@@ -43,7 +48,7 @@ export default function MenuRenderer({ items, Component, typographyProps, startI
         <MenuList>
           {
             items?.map((item, index) => (
-              <MenuItem onClick={item.onClick} key={item.label}>
+              <MenuItem onClick={handleMenuItemClick(item.onClick)} key={item.label}>
                 {
                   (item.icon && isString(item.icon)) ?
                     <Avatar alt={item.label} src={item.imageUrl}/> :

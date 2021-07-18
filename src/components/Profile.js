@@ -13,6 +13,9 @@ import {MailOutline} from "@material-ui/icons";
 import {Call} from "@material-ui/icons";
 import Heading from "./helperComponents/Heading";
 import Highlight from "./helperComponents/Highlight";
+import {Tooltip} from "@material-ui/core";
+import constants from "../utils/constants";
+import Linkedin from "../assets/linkedin.svg";
 
 const Profile = () => {
   const classes = useStyles();
@@ -25,8 +28,8 @@ const Profile = () => {
             V
           </Avatar>
         </Grid>
-        <Grid item xl={9} lg={8} md={8} sm={12} xs={12} className={classes.contactDetails}>
-          <Box display='flex' alignItems='center'>
+        <Grid item xl={9} lg={8} md={8} sm={12} xs={12}>
+          <Box display='flex' alignItems='center' flexWrap='wrap' className={classes.handleMobileView}>
             <Typography variant='h4' component='h2' className={classes.marginRight}>
               {PersonalDetails.MY_NAME}
             </Typography>
@@ -65,6 +68,17 @@ const Profile = () => {
             >
               {PersonalDetails.CONTACT}
             </Typography>
+          </Box>
+          <Box display='flex' alignItems='center'>
+            {
+              constants.socialHandles.map(({name, image, url}) => (
+                <Tooltip title={name} placement={"bottom"} key={name}>
+                  <IconButton color='secondary' component='a' href={url} target="_blank">
+                    <img src={image} alt='Linkedin_icon' width={24} height={24}/>
+                  </IconButton>
+                </Tooltip>
+              ))
+            }
           </Box>
         </Grid>
       </Grid>
@@ -119,6 +133,11 @@ const useStyles = makeStyles(theme => ({
   detailsContainer: {
     paddingLeft: theme.spacing(3),
     paddingTop: theme.spacing(2)
+  },
+  handleMobileView: {
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column"
+    }
   }
 }));
 
