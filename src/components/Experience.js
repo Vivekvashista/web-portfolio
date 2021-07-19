@@ -8,6 +8,7 @@ import TextWithDot from "./helperComponents/TextWithDot";
 import {getMonthFromIndex} from "../utils/helpers";
 import {makeStyles} from "@material-ui/core/styles";
 import Heading from "./helperComponents/Heading";
+import {FiberManualRecord} from "@material-ui/icons";
 
 const Experience = () => {
   const classes = useStyles();
@@ -18,7 +19,7 @@ const Experience = () => {
     const years = Math.floor(months / 12);
 
     if(years)
-      return years + "yrs " + (months % 12) +" months";
+      return years + " year " + (months % 12) +" months";
     return months % 12 + " months";
   }
 
@@ -28,16 +29,17 @@ const Experience = () => {
 
   return (
     <Page className={classes.page}>
-      <Grid container direction='column'>
+      <Grid container direction='column' spacing={1}>
         {
           constants.experiences.map(experience => {
             const {
               jobTitle, company, startDate,
-              endDate, responsibilities
+              endDate, responsibilities, techStack,
+              links
             } = experience;
 
             return (
-              <>
+              <React.Fragment key={company}>
                 <Grid item>
                   <Box>
                     <Typography variant='h3' component='h1'>
@@ -52,20 +54,33 @@ const Experience = () => {
                     </Box>
                   </Box>
                 </Grid>
-                <Grid item container>
-                  <Grid item>
-                    <div className={classes.stepper}/>
-                  </Grid>
-                  <Grid item>
-                    <Heading text='Description'/>
-                    {
-                      responsibilities.map((res, index) => (
-                        <TextWithDot text={res} key={index} typographyProps={{variant:'h6' ,color: "textPrimary"}}/>
-                      ))
-                    }
-                  </Grid>
+                <Grid item>
+                  <Heading text='Description'/>
+                  {
+                    responsibilities.map((res, index) => (
+                      <TextWithDot text={res} key={index} typographyProps={{variant:'h6' ,color: "textPrimary"}}/>
+                    ))
+                  }
                 </Grid>
-              </>
+                <Grid item>
+                  <Heading text='Technologies used'/>
+                  <TextWithDot text={techStack.join(", ")} typographyProps={{variant: 'h6', color: "textPrimary"}}/>
+                </Grid>
+                <Grid item>
+                  <Heading text='Project Links'/>
+                  {
+                    links.map(({ name, url}) => (
+                      <TextWithDot text={name} typographyProps={{
+                        variant:'h6',
+                        component:'a',
+                        href:url,
+                        target:"_blank",
+                        className:classes.link
+                      }} key={url}/>
+                    ))
+                  }
+                </Grid>
+              </React.Fragment>
             )
           })
         }
@@ -81,12 +96,21 @@ const useStyles = makeStyles(theme => ({
     }
   },
   page: {
-    padding: theme.spacing(1, 10)
+    [theme.breakpoints.down("sm")]: {
+      padding: theme.spacing(1, 2)
+    },
+    [theme.breakpoints.up("md")]: {
+      padding: theme.spacing(1, 10)
+    },
   },
   stepper: {
-    width: 1,
+    width: '100%',
     height: "100%",
     borderRight: `1px solid ${theme.palette.secondary.main}`
+  },
+  link: {
+    ...theme.utils.link,
+    color: theme.palette.secondary.main,
   }
 }));
 

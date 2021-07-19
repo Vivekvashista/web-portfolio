@@ -16,7 +16,7 @@ const constants = {
     {
       image: Github,
       name: "Github",
-      url: "https://github.com/Vivekvashista",
+      url: "https://github.com/vashistavivek",
     },
     {
       image: Leetcode,
@@ -51,6 +51,11 @@ const constants = {
         "Created microservices in Spring Boot and enabled cache using Redis.",
         "Created APIs while maintaining informative logs for debugging post production.",
         "Used Git for saving codebase and Ubuntu node and nginx for deployment"
+      ],
+      techStack: ["JavaScript", "ReactJS", "NextJS", "Redux", "Material-UI", "Java", "Spring boot", "Redis", "PostgreSQL", "Git", "Ubuntu"],
+      links: [
+        {name: "SkillCounty", url: "https://skillcounty.com"},
+        {name: "JobLe", url: "https://joble.in"},
       ]
     }
   ]

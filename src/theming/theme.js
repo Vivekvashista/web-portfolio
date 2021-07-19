@@ -25,7 +25,7 @@ export const theme = createTheme({
     }
   },
   typography: {
-    ...typography
+    ...typography,
   },
   overrides: {
     MuiCssBaseline: {
@@ -42,4 +42,12 @@ export const theme = createTheme({
       },
     },
   },
+  utils: {
+    link: {
+      textDecoration: 'none',
+      "&:hover": {
+        textDecoration: 'underline'
+      }
+    }
+  }
 });

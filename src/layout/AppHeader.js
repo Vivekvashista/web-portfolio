@@ -52,9 +52,9 @@ const AppHeader = () => {
         {
           activeTab !==0 &&
           <Box display='flex' alignItems='center'>
-            <Avatar src={Photo} alt='Vivek' className={classes.large}/>
+            <Avatar src={Photo} alt='Vivek' className={`${classes.large} ${classes.handleVisibility}`}/>
             <Box>
-              <Typography variant='body2' component='div'>
+              <Typography variant='body2' component='div' className={classes.handleVisibility}>
                 {PersonalDetails.MY_NAME}
               </Typography>
               <JobTitleWithEffect
@@ -125,7 +125,7 @@ const useStyles = makeStyles(theme => ({
   large: {
     width: 55,
     height: 55,
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
   },
   transition: {
     position: 'relative',
@@ -174,6 +174,11 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     marginLeft: 'auto'
+  },
+  handleVisibility: {
+    [theme.breakpoints.down("xs")]: {
+      display: 'none'
+    }
   }
 }));
 export default AppHeader;

@@ -124,11 +124,8 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2)
   },
   removeLinkStyle: {
+    ...theme.utils.link,
     color: theme.palette.text.primary,
-    textDecoration: 'none',
-    "&:hover": {
-      textDecoration: 'underline'
-    }
   },
   detailsContainer: {
     paddingLeft: theme.spacing(3),
