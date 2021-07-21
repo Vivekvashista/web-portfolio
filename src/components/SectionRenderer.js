@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom";
 import Profile from "./Profile";
 import constants from "../utils/constants";
 import Experience from "./Experience";
+import Projects from "./Projects";
 
 const SectionRenderer = () => {
   const { id } = useParams();
@@ -15,7 +16,9 @@ const SectionRenderer = () => {
       <Profile/> :
       getIndex(id) === 1 ?
         <Experience/> :
-        <>Other pages</>
+        getIndex(id) === 2 ?
+          <Projects/> :
+          <>Other pages</>
   );
 };
 

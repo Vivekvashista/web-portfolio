@@ -32,7 +32,7 @@ export const selectTab = (history, index) => () => {
   history.push(`/${encodeURIComponent(constants.navItems[index])}`);
 }
 
-export const  getMonthFromIndex = index => {
+export const getMonthFromIndex = index => {
   switch (index) {
     case 0: return "Jan";
     case 1: return "Feb";
@@ -49,3 +49,6 @@ export const  getMonthFromIndex = index => {
     default: return "Invalid month"
   }
 }
+
+export const getMonthAndYear = date =>
+  `${getMonthFromIndex(date.getMonth())} ${date.getFullYear()}`;

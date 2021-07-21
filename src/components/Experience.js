@@ -9,6 +9,7 @@ import {getMonthFromIndex} from "../utils/helpers";
 import {makeStyles} from "@material-ui/core/styles";
 import Heading from "./helperComponents/Heading";
 import {FiberManualRecord} from "@material-ui/icons";
+import {getMonthAndYear} from "../utils/helpers";
 
 const Experience = () => {
   const classes = useStyles();
@@ -24,7 +25,7 @@ const Experience = () => {
   }
 
   const getStartDate = (startDate, endDate) => {
-    return `${getMonthFromIndex(startDate.getMonth())} ${startDate.getFullYear()} - ${endDate}`;
+    return `${getMonthAndYear(startDate)} - ${endDate}`;
   }
 
   return (

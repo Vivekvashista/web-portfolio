@@ -3,6 +3,7 @@ import Github from '../assets/github.svg';
 import Leetcode from '../assets/leetcode.svg';
 import Codechef from '../assets/codechef.svg';
 import hackerearth from '../assets/hackerearth.svg';
+import PortFolioPreview from '../assets/portfolioPreview.jpg';
 
 const constants = {
   navItems: ["Profile", "Experience", "Projects", "Education", "Certification and Achievements", "Recommendations"],
@@ -58,6 +59,20 @@ const constants = {
         {name: "JobLe", url: "https://joble.in"},
       ]
     }
+  ],
+  projects: [
+    {
+      id: 1,
+      title: 'Web Portfolio',
+      preview: PortFolioPreview,
+      startDate: new Date('2021-07-01'),
+      endDate: new Date('2021-07-01'),
+      description: "Motivation behind this project is to showcase my professional profile.",
+      techStack: ["ReactJS, React-router, Material-UI"],
+      githubUrl: 'https://github.com/vashistavivek/web-portfolio',
+      demoUrl: 'https://github.com'
+    },
+
   ]
 }
 
