@@ -44,9 +44,9 @@ export const theme = createTheme({
   },
   utils: {
     link: {
-      textDecoration: 'none',
+      textDecoration: 'underline',
       "&:hover": {
-        textDecoration: 'underline'
+        textDecoration: 'none'
       }
     }
   }

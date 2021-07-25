@@ -5,7 +5,7 @@ import {Avatar} from "@material-ui/core";
 import image from '../assets/photo.jpg';
 import {Box} from "@material-ui/core";
 import {Typography} from "@material-ui/core";
-import JobTitleWithEffect from "../layout/components/JobTitleWithEffect";
+import JobTitleWithEffect from "./helperComponents/JobTitleWithEffect";
 import {makeStyles} from "@material-ui/core/styles";
 import {PersonalDetails} from "../utils/constants";
 import {IconButton} from "@material-ui/core";
@@ -15,14 +15,13 @@ import Heading from "./helperComponents/Heading";
 import Highlight from "./helperComponents/Highlight";
 import {Tooltip} from "@material-ui/core";
 import constants from "../utils/constants";
-import Linkedin from "../assets/linkedin.svg";
 
 const Profile = () => {
   const classes = useStyles();
 
   return (
     <Page>
-      <Grid container className={classes.detailsContainer} alignItems='center'>
+      <Grid container alignItems='center'>
         <Grid item xl={3} lg={4} md={4} sm={12} xs={12} className={classes.center}>
           <Avatar alt="Display Picture" src={image} className={classes.large}>
             V
@@ -83,7 +82,7 @@ const Profile = () => {
         </Grid>
       </Grid>
 
-      <Box paddingLeft={3} paddingTop={3}>
+      <Box paddingTop={3}>
         <Heading text={'About'}/>
         <Typography variant='body1' component='div'>
           Hi, my name is Vivek Sharma. I am working as full stack engineer at s759labs (Stealth mode).<br/>
@@ -126,10 +125,6 @@ const useStyles = makeStyles(theme => ({
   removeLinkStyle: {
     ...theme.utils.link,
     color: theme.palette.text.primary,
-  },
-  detailsContainer: {
-    paddingLeft: theme.spacing(3),
-    paddingTop: theme.spacing(2)
   },
   handleMobileView: {
     [theme.breakpoints.down("sm")]: {

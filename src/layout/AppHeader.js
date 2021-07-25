@@ -15,7 +15,7 @@ import {ListItemText} from "@material-ui/core";
 import {useState} from "react";
 import {useEffect} from "react";
 import {useHistory, useLocation} from 'react-router-dom';
-import JobTitleWithEffect from "./components/JobTitleWithEffect";
+import JobTitleWithEffect from "../components/helperComponents/JobTitleWithEffect";
 import MenuRenderer from "../components/helperComponents/MenuRenderer";
 import {PersonalDetails} from "../utils/constants";
 import {AccountCircle} from "@material-ui/icons";

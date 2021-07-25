@@ -4,6 +4,7 @@ import Profile from "./Profile";
 import constants from "../utils/constants";
 import Experience from "./Experience";
 import Projects from "./Projects";
+import Education from "./Education";
 
 const SectionRenderer = () => {
   const { id } = useParams();
@@ -18,7 +19,9 @@ const SectionRenderer = () => {
         <Experience/> :
         getIndex(id) === 2 ?
           <Projects/> :
-          <>Other pages</>
+          getIndex(id) === 3 ?
+            <Education/> :
+            <>Other pages</>
   );
 };
 

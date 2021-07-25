@@ -29,7 +29,7 @@ const Experience = () => {
   }
 
   return (
-    <Page className={classes.page}>
+    <Page>
       <Grid container direction='column' spacing={1}>
         {
           constants.experiences.map(experience => {
@@ -76,8 +76,7 @@ const Experience = () => {
                         component:'a',
                         href:url,
                         target:"_blank",
-                        className:classes.link
-                      }} key={url}/>
+                      }} key={url} isLink/>
                     ))
                   }
                 </Grid>
@@ -96,22 +95,10 @@ const useStyles = makeStyles(theme => ({
       marginRight: theme.spacing(1)
     }
   },
-  page: {
-    [theme.breakpoints.down("sm")]: {
-      padding: theme.spacing(1, 2)
-    },
-    [theme.breakpoints.up("md")]: {
-      padding: theme.spacing(1, 10)
-    },
-  },
   stepper: {
     width: '100%',
     height: "100%",
     borderRight: `1px solid ${theme.palette.secondary.main}`
-  },
-  link: {
-    ...theme.utils.link,
-    color: theme.palette.secondary.main,
   }
 }));
 
