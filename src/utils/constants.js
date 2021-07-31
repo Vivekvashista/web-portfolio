@@ -8,7 +8,7 @@ import GoogleKeepPreview from '../assets/GoogleKeepPreview.jpg';
 import PartSmartPreview from '../assets/ParkSmartPreview.png';
 
 const constants = {
-  navItems: ["Profile", "Experience", "Projects", "Education", "Recommendations"],
+  navItems: ["Profile", "Experience", "Projects", "Education"],
   interests: ["Full Stack Engineer", "Frontend Engineer", "React Developer", "Javascript Developer", "Web Developer"],
   socialHandles: [
     {
@@ -72,7 +72,7 @@ const constants = {
       description: "Motivation behind this project is to showcase my professional profile.",
       techStack: ["ReactJS, React-router, Material-UI"],
       githubUrl: 'https://github.com/vashistavivek/web-portfolio',
-      demoUrl: 'https://github.com'
+      demoUrl: 'https://vivek.netlify.app/'
     },
     {
       id: 2,

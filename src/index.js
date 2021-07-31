@@ -1,16 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import ThemeProvider from "@material-ui/styles/ThemeProvider";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import {theme} from "./theming/theme";
+import ThemeHandler from "./ThemeHandler";
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <CssBaseline/>
-    <App/>
-  </ThemeProvider>,
+  <ThemeHandler/>,
   document.getElementById('root')
 );
 

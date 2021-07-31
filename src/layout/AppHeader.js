@@ -24,6 +24,9 @@ import {selectTab} from "../utils/helpers";
 import {getMenuItems} from "../utils/helpers";
 import {getSocialMediaItems} from "../utils/helpers";
 import {Tooltip} from "@material-ui/core";
+import {useContext} from "react";
+import {ThemeContext} from "../ThemeHandler";
+import {Flare} from "@material-ui/icons";
 
 const AppHeader = () => {
   const classes = useStyles();
@@ -31,6 +34,7 @@ const AppHeader = () => {
   const [activeTab, setActiveTab] = useState(0);
   const history = useHistory();
   const location = useLocation();
+  const { toggleTheme, mode} = useContext(ThemeContext);
 
   const getNavTypographyProps = (index) => {
     return ({
@@ -79,16 +83,19 @@ const AppHeader = () => {
                 ))
               }
             </List>
-            <MenuRenderer
-              items={getMenuItems(history, 4)}
-              Component={
-                <IconButton color='secondary'>
-                  <UnfoldMore/>
-                </IconButton>
-              }
-              typographyProps={getNavTypographyProps}
-              startIndex={4}
-            />
+            {
+              getMenuItems(history, 4).length > 0 &&
+              <MenuRenderer
+                items={getMenuItems(history, 4)}
+                Component={
+                  <IconButton color='secondary'>
+                    <UnfoldMore/>
+                  </IconButton>
+                }
+                typographyProps={getNavTypographyProps}
+                startIndex={4}
+              />
+            }
           </Box>
           <Box className={classes.showOnMobile}>
             <MenuRenderer
@@ -110,9 +117,13 @@ const AppHeader = () => {
               </IconButton>
             }
           />
-          <Tooltip title='toggle light/dark mode'>
+          <Tooltip title={`switch to ${mode === 'dark' ? "light" : 'dark'} mode`} onClick={toggleTheme}>
             <IconButton>
-              <Brightness3/>
+              {
+                mode === 'dark' ?
+                  <Flare/> :
+                  <Brightness3/>
+              }
             </IconButton>
           </Tooltip>
         </Box>
