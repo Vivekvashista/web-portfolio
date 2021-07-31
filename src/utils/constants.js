@@ -72,7 +72,7 @@ const constants = {
       description: "Motivation behind this project is to showcase my professional profile.",
       techStack: ["ReactJS, React-router, Material-UI"],
       githubUrl: 'https://github.com/vashistavivek/web-portfolio',
-      demoUrl: 'https://vivek.netlify.app/'
+      demoUrl: 'https://vivek-portfolio.netlify.app/'
     },
     {
       id: 2,
