@@ -81,9 +81,9 @@ const constants = {
       startDate: new Date('2020-08-01'),
       endDate: new Date('2020-08-01'),
       description: "This is just a clone of Google Keep.",
-      techStack: ["HTML, CSS, JavaScript"],
-      githubUrl: 'https://github.com/vashistavivek/Google-Keep-UI-Clone',
-      demoUrl: 'https://vashistavivek.github.io/Google-Keep-UI-Clone/'
+      techStack: ["ReactJS, CSS, JavaScript"],
+      githubUrl: 'https://github.com/vashistavivek/Google-Keep-Clone',
+      demoUrl: 'https://vashistavivek.github.io/Google-Keep-Clone/'
     },
     {
       id: 3,
