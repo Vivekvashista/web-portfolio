@@ -21,7 +21,7 @@ const Profile = () => {
 
   return (
     <Page>
-      <Grid container alignItems='center'>
+      <Grid container alignItems='center' spacing={1}>
         <Grid item xl={3} lg={4} md={4} sm={12} xs={12} className={classes.center}>
           <Avatar alt="Display Picture" src={image} className={classes.large}>
             V
@@ -104,8 +104,8 @@ const Profile = () => {
 
 const useStyles = makeStyles(theme => ({
   large: {
-    width: 200,
-    height: 200
+    width: 150,
+    height: 150
   },
   center: {
     [theme.breakpoints.down("sm")]: {
@@ -114,7 +114,8 @@ const useStyles = makeStyles(theme => ({
     }
   },
   marginRight: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
+    marginBottom: theme.spacing(1),
   },
   removeLinkStyle: {
     ...theme.utils.link,

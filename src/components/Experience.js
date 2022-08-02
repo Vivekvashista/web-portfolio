@@ -14,8 +14,11 @@ import {getMonthAndYear} from "../utils/helpers";
 const Experience = () => {
   const classes = useStyles();
 
-  const getDuration = startDate => {
-    const diff = new Date().getTime() - startDate.getTime();
+  const getDuration = (startDate, endDate) => {
+    if(!(endDate instanceof Date)){
+      endDate = new Date();
+    }
+    const diff = endDate.getTime() - startDate.getTime();
     const months = Math.floor(Math.round(diff / ( 1000*60*60*24*30 )));
     const years = Math.floor(months / 12);
 
@@ -25,7 +28,9 @@ const Experience = () => {
   }
 
   const getStartDate = (startDate, endDate) => {
-    return `${getMonthAndYear(startDate)} - ${endDate}`;
+    return !(endDate instanceof Date) ? 
+            `${getMonthAndYear(startDate)} - ${endDate}` : 
+              `${getMonthAndYear(startDate)} - ${getMonthAndYear(endDate)}`;
   }
 
   return (
@@ -51,7 +56,7 @@ const Experience = () => {
                         {company}
                       </Typography>
                       <TextWithDot text={getStartDate(startDate, endDate)}/>
-                      <TextWithDot text={getDuration(startDate)}/>
+                      <TextWithDot text={getDuration(startDate, endDate)}/>
                     </Box>
                   </Box>
                 </Grid>

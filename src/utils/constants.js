@@ -59,7 +59,7 @@ const constants = {
       jobTitle: "Full Stack Engineer",
       company: "s759labs",
       startDate: new Date("2020-09-01"),
-      endDate: "Aug 2021",
+      endDate: new Date("2021-08-10"),
       responsibilities: [
         "I am 2nd employee in the company.",
         "We developed 3 React based web apps from scratch.",
