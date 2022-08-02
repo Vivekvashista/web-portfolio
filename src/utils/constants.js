@@ -9,7 +9,7 @@ import PartSmartPreview from '../assets/ParkSmartPreview.png';
 
 const constants = {
   navItems: ["Profile", "Experience", "Projects", "Education"],
-  interests: ["Full Stack Engineer", "Frontend Engineer", "React Developer", "Javascript Developer", "Web Developer"],
+  interests: ["Full Stack Engineer", "React + Django Developer", "Javascript Developer"],
   socialHandles: [
     {
       image: Linkedin,
@@ -40,14 +40,31 @@ const constants = {
   experiences: [
     {
       jobTitle: "Full Stack Engineer",
+      company: "EyeMyEye Pvt Ltd",
+      startDate: new Date("2021-08-11"),
+      endDate: "Present",
+      responsibilities: [
+        "Work in an agile environment where tasks are distributed with estimated deadline.",
+        "Take part in design phase where we discuss various aspect for better UX.",
+        "Convert design into code keeping software development principle in mind.",
+        "Write fast performing APIs in well maintain and readable manner.",
+        "Keeping eyes on logs for any bug, inconsistency or use cases."
+      ],
+      techStack: ["Python", "Django", "Elasticsearch", "Redis", "PostgreSQL", "MongoDB", "Javascript", "jQuery", "CSS"],
+      links: [
+        {name: "EyeMyEye", url: "https://eyemyeye.com"}
+      ]
+    },
+    {
+      jobTitle: "Full Stack Engineer",
       company: "s759labs",
       startDate: new Date("2020-09-01"),
-      endDate: "Present",
+      endDate: "Aug 2021",
       responsibilities: [
         "I am 2nd employee in the company.",
         "We developed 3 React based web apps from scratch.",
         "Worked in an agile environment from developing features to release them in production.",
-        "Written fault tolerant code, created interactive user interface (UI).",
+        "Written fault tolerant code, created interactive user interface.",
         "Worked with Isomorphic React library in one of our product.",
         "Implemented different workflows with Redux for flawless performance within the applications.",
         "Used web and browser APIs including local storage for synchronizing data locally for better UX.",
@@ -117,17 +134,19 @@ export const PersonalDetails = {
   EMAIL: "offvivek524@gmail.com",
   CONTACT: "8909048705",
   SKILLS: [
-    "JavaScript",
-    "Java",
-    "ReactJS",
-    "NextJS",
-    "Redux",
-    "Material-UI",
-    "HTML",
-    "CSS",
-    "Spring Boot",
+    "Python",
+    "Django",
     "Redis",
     "PostgreSQL",
+    "MongoDB",
+    "Elasticsearch",
+    "JavaScript",
+    "React",
+    "NextJS",
+    "Redux",
+    "CSS",
+    "Java",
+    "Spring Boot",
     "Git",
     "Problem Solving",
   ]

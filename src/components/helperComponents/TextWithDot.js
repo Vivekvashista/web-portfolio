@@ -8,7 +8,7 @@ const TextWithDot = ({ typographyProps={}, text, isLink }) => {
   const classes = useStyles();
 
   return (
-    <Box display='flex' alignItems='center'>
+    <Box display='flex' alignItems='flex-start'>
       <IconButton disabled size='medium'>
         <div className={classes.style}/>
       </IconButton>

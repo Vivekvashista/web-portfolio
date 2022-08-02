@@ -34,8 +34,8 @@ const Profile = () => {
             </Typography>
             <JobTitleWithEffect
               typographyProps={{
-                variant:'h2',
-                component:'h1'
+                variant:'h3',
+                component:'h2'
               }}
             />
           </Box>
@@ -85,17 +85,11 @@ const Profile = () => {
       <Box paddingTop={3}>
         <Heading text={'About'}/>
         <Typography variant='body1' component='div'>
-          Hi, my name is Vivek Sharma. I am working as full stack engineer at s759labs (Stealth mode).<br/>
-          I have
-          <Highlight
-            text={"1 year of experience in working with React.js, Redux, Material-UI and Microservices in Java."}/>
-          <br/>
-          I have also worked with
-          <Highlight text={"Isomorphic React"}/>
-          library. I love to explore tech and learn new things everyday.<br/>
-          I am skilled in component based design with reusable, scalable and maintainable code.<br/>
-          I love to write function based code with Software Engineering Principles in mind.<br/>
-          I have analytical skills to keep UI simple for better UX.<br/>
+          Hey, I am glad that you are here. <br/><br/>I works as Full Stack Engineer.
+          I have almost <Highlight text={"2 years"}/>of experience in working with
+          <Highlight text={"Python, Django, PostgreSQL, Elasticsearch, MongoDB, Redis, Javascript, React, Redux."}/>
+          I have also worked with<Highlight text={"Java and Spring Boot."}/><br/><br/>
+          I am very curious about learning tech and enjoys challenging work. Strong in replicating design into code with better UX. Code debugging is my favourite part of work.
         </Typography>
         <Box paddingTop={2}>
           <Heading text="Skills"/>
